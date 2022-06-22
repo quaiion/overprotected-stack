@@ -1,4 +1,4 @@
-#include "stecc.hpp"
+#include "stack.hpp"
 #include <stdio.h>
 
 struct test_t {

@@ -1,4 +1,4 @@
-#include "stecc.hpp"
+#include "stack.hpp"
 
 #ifdef STACK_VERIFICATION_ON
 #define dev_stack_dump(stack_ptr, oper_code, verif_code)                                                                        \
