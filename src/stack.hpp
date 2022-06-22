@@ -10,6 +10,7 @@
 #include <malloc.h>
 #include <limits.h>
 #include <string.h>
+#include <stdint.h>
 
 struct stack_t {
 

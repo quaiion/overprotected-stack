@@ -397,14 +397,14 @@ void stack_dump_ (const stack_t* stack, const int linenum, const char* funcname,
     if (stack) {
 
         fprintf (logfile, "\n\nstack address [%p]", stack);
-        fprintf (logfile, "\n\nsize %llu\ncapacity %llu\nmincapacity %llu\ntypesize %d\n\ndata [%p]\n", stack->size, stack->capacity, \
+        fprintf (logfile, "\n\nsize %lu\ncapacity %lu\nmincapacity %lu\ntypesize %d\n\ndata [%p]\n", stack->size, stack->capacity, \
                  stack->mincapacity, stack->typesize, stack->data);
 
         size_t sizesize = stack->size * stack->typesize;
         size_t i = 0;
         for ( ; i < sizesize; i += stack->typesize) {
 
-            fprintf (logfile, "\n[%llu]   ", i / stack->typesize);
+            fprintf (logfile, "\n[%lu]   ", i / stack->typesize);
             elem_fprint (logfile, stack->data + i);
         }
         fprintf (logfile, " ____ SIZE EDGE");
@@ -412,7 +412,7 @@ void stack_dump_ (const stack_t* stack, const int linenum, const char* funcname,
         size_t capsize = stack->capacity * stack->typesize;
         for ( ; i < capsize; i += stack->typesize) {
 
-            fprintf (logfile, "\n[%llu]   ", i / stack->typesize);
+            fprintf (logfile, "\n[%lu]   ", i / stack->typesize);
             elem_fprint (logfile, stack->data + i);
         }
 
@@ -544,14 +544,14 @@ void dev_stack_dump_ (const stack_t* stack, const int linenum, const char* funcn
     if (stack) {
 
         fprintf (logfile, "\n\nstack address [%p]", stack);
-        fprintf (logfile, "\n\nsize %llu\ncapacity %llu\nmincapacity %llu\ntypesize %d\n\ndata [%p]\n", stack->size, stack->capacity,   \
+        fprintf (logfile, "\n\nsize %lu\ncapacity %lu\nmincapacity %lu\ntypesize %d\n\ndata [%p]\n", stack->size, stack->capacity,   \
                  stack->mincapacity, stack->typesize, stack->data);
 
         size_t sizesize = stack->size * stack->typesize;
         size_t i = 0;
         for ( ; i < sizesize; i += stack->typesize) {
 
-            fprintf (logfile, "\n[%llu]   ", i / stack->typesize);
+            fprintf (logfile, "\n[%lu]   ", i / stack->typesize);
                 
             for (unsigned int k = 0; k < stack->typesize; k++) {
 
@@ -563,7 +563,7 @@ void dev_stack_dump_ (const stack_t* stack, const int linenum, const char* funcn
         size_t capsize = stack->capacity * stack->typesize;
         for ( ; i < capsize; i += stack->typesize) {
 
-            fprintf (logfile, "\n[%llu]   ", i / stack->typesize);
+            fprintf (logfile, "\n[%lu]   ", i / stack->typesize);
 
             for (unsigned int k = 0; k < stack->typesize; k++) {
 
