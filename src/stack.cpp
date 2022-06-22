@@ -8,6 +8,13 @@
 
 static void dev_stack_dump_ (const stack_t* stack, const int linenum, const char* funcname, const char* filename,               \
                              OPER_CODE oper_code, unsigned short verif_code);
+
+#define val_dump(value_ptr)                                                                                                     \
+    do {                                                                                                                        \
+        val_dump_ (value_ptr, __LINE__, __PRETTY_FUNCTION__, __FILE__);                                                         \
+    } while (0)
+
+void val_dump_ (void* value, const int linenum, const char* funcname, const char* filename);
 #endif
                   
 static unsigned char* stack_resize_up (stack_t* stack);
@@ -297,7 +304,6 @@ unsigned char* stack_resize_down (stack_t* stack) {
     return real_buffer;
 }
 
-#ifdef STACK_VERIFICATION_ON
 unsigned short stack_verify (stack_t* stack) {
 
     unsigned short verif_code = STK_OK;
@@ -380,7 +386,6 @@ unsigned short stack_verify (stack_t* stack) {
 
     return verif_code;
 }
-#endif
 
 void stack_dump_ (const stack_t* stack, const int linenum, const char* funcname, const char* filename,
                   void (*elem_fprint) (FILE*, const void*)) {

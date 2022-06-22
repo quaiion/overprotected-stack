@@ -38,11 +38,6 @@ struct stack_t {
         stack_dump_ (stack_ptr, __LINE__, __PRETTY_FUNCTION__, __FILE__, elem_fprint);                                              \
     } while (0)
 
-#define val_dump(value_ptr)                                                                                                         \
-    do {                                                                                                                            \
-        val_dump_ (value_ptr, __LINE__, __PRETTY_FUNCTION__, __FILE__);                                                             \
-    } while (0)
-
 #ifdef STACK_VERIFICATION_ON
 enum VERIF_CODE {STK_OK = 0b0000000000000000, NOT_CONSTRUCTED_YET = 0b1000000000000000, NO_STK = 0b0000000000000010,                \
                  OVERFLOW = 0b0000000000000100, TYPESIZE_ERR = 0b0000000000001000, MEM_ERR = 0b0000000000010000,                    \
@@ -66,13 +61,9 @@ OPER_CODE stack_dtor (stack_t* stack);
 OPER_CODE stack_push (stack_t* stack, void* value);
 OPER_CODE stack_pop (stack_t* stack, void* value);
 
-#ifdef STACK_VERIFICATION_ON
 unsigned short stack_verify (stack_t* stack);
-#endif
 
-void stack_dump_ (const stack_t* stack, const int linenum, const char* funcname, const char* filename,
+void stack_dump_ (const stack_t* stack, const int linenum, const char* funcname, const char* filename,      // use macro stack_dump
                   void (*elem_fprint) (FILE*, const void*));
-
-void val_dump_ (void* value, const int linenum, const char* funcname, const char* filename);
 
 #endif
